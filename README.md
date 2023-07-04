@@ -1,2 +1,2 @@
-# math-soft
+# MathSoft
 the homework of MathSoft Course
