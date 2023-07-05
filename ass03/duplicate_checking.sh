@@ -13,10 +13,12 @@ for file1 in $file_list; do
       diff_lines=$(diff -U 0 "$file1" "$file2" | grep -E '^\+' | grep -vc '+++\|\\')
       total_lines_file1=$(wc -l < "$file1")
       total_lines_file2=$(wc -l < "$file2")
-#       echo "all: $file1 $file2 $diff_lines $total_lines_file1 $total_lines_file2"
+
+      # 记录行数不同带来的差异
       diff_lines_abs=$((total_lines_file1 - total_lines_file2))
       diff_lines_abs=${diff_lines_abs#-}  # 取绝对值
       diff_lines=$((diff_lines + diff_lines_abs))
+
       if [ "$diff_lines" -lt "$threshold" ]; then
         # 区别行数小于阈值，记录文件名
         echo "$file1  $file2  $diff_lines  $total_lines_file1  $total_lines_file2"
