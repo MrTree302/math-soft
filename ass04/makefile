@@ -13,6 +13,6 @@ output: code.c
 	gcc -o output code.c -lgsl -lgslcblas -lm
 
 clean:
-	rm -f output interp.aux interp.log interp.out interp.synctex.gz
+	rm -f output interp.aux interp.log interp.dat interp.out interp.synctex.gz
 
 
