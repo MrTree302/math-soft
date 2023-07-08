@@ -26,3 +26,9 @@ target_link_libraries(chicken chicken_lib)
 install(TARGETS chicken DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
 install(TARGETS chicken_lib DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)
 install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/Chicken.h DESTINATION ${CMAKE_INSTALL_PREFIX}/include)
+add_custom_target(
+    doc
+    COMMAND ${CMAKE_COMMAND} -E env "DOXYGEN_EXECUTABLE=doxygen" doxygen Doxyfile
+    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+    COMMENT "Generating documentation with Doxygen"
+)
