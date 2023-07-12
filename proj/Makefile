@@ -1,6 +1,6 @@
 PROJ = step-3
 SOURCE := $(PROJ).cc
-IMAGE = solution.eps
+IMAGE = solution
 REPORT = final.tex
 
 all: init plot write
@@ -12,24 +12,27 @@ init: $(SOURCE)
 
 plot: build/$(PROJ)
 	cd build && ./$(PROJ)
-	mv build/$(IMAGE) ./
+	mkdir imag
+	mv build/$(IMAGE).eps ./imag
+	mv build/$(IMAGE).gpl ./imag
+	mv build/$(IMAGE).vtk ./imag
 
 write: $(REPORT)
-	xelatex $(REPORT)
+	mkdir doc
+	xelatex -output-directory=doc $(REPORT)
 
 clean:
 	rm -rf  build
-	rm -f *.aux *.log \
+	rm -rf  imag
+	cd doc && rm -f *.aux *.log \
 *.toc *.snm *.nav *.out \
 *.thm *.bbl *.ps *.dvi *.blg \
 *.bcf *.xml *.synctex.gz
 
 clean_all:
 	rm -rf  build
-	rm -f *.aux *.log *.eps *.pdf\
-*.toc *.snm *.nav *.out \
-*.thm *.bbl *.ps *.dvi *.blg \
-*.bcf *.xml *.synctex.gz
+	rm -rf  imag
+	rm -rf  doc
 
 .PHONY: all clean clean_all
 

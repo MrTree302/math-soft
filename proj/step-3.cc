@@ -595,8 +595,12 @@ void Step3::output_results() const
   // functions in the DataOut class we are using here that can write the
   // data in postscript, AVS, GMV, Gnuplot, or some other file
   // formats):
-  std::ofstream output("solution.eps");
-  data_out.write_eps(output);
+  std::ofstream output1("solution.eps");
+  data_out.write_eps(output1);
+  std::ofstream output2("solution.gpl");
+  data_out.write_gnuplot(output2);
+  std::ofstream output3("solution.vtk");
+  data_out.write_vtk(output3);
 }
 
 

@@ -166,5 +166,20 @@ std::vector<types::global_dof_index>
 local_dof_indices (fe.n_dofs_per_cell());
 \end{lstlisting}
 这个变量的名字可能有点名不副实--它的意思是 "当前单元格中局部定义的自由度的全局指数"--但是在整个库中, 包含这些信息的变量都被统一以这种方式命名。
-
+\section{运行结果}
+运行示例中的这段代码，可以得到如下图像
+    \begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.5\textwidth]{./imag/solution.eps}
+    \caption{二维拉普拉斯方程解}
+    \end{figure}
+\\    
+该示例计算了一个膜受到受到外部（垂直的）力时的垂直变形数据，膜的边界被夹在一个没有垂直变化的方形框架上。参数如下所示：
+\lstset{language=C}
+\begin{lstlisting}
+Number of active cells: 1024
+Number of degrees of freedom: 1089
+DEAL:cg::Starting value 0.121094
+DEAL:cg::Convergence step 36 value 7.07761e-08
+\end{lstlisting}
 \end{document}
