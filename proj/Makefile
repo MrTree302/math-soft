@@ -2,6 +2,7 @@ PROJ = step-3
 SOURCE := $(PROJ).cc
 IMAGE = solution
 REPORT = final.tex
+TOOL = script.gp
 
 all: init plot write
 
@@ -16,6 +17,7 @@ plot: build/$(PROJ)
 	mv build/$(IMAGE).eps ./imag
 	mv build/$(IMAGE).gpl ./imag
 	mv build/$(IMAGE).vtk ./imag
+	gnuplot $(TOOL)
 
 write: $(REPORT)
 	mkdir doc
